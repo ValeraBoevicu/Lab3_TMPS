@@ -146,7 +146,7 @@ export class ActionMovieType extends MovieType {
 ### The result after running the functional:
 ### It represents information on how many movies there are in total and by which movies they are:
 - Total movies: 6
-Action movies: 2
-Comedy movies: 2
-Drama movies: 2 
+* Action movies: 2
+* Comedy movies: 2
+* Drama movies: 2 
 
