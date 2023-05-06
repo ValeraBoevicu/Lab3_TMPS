@@ -14,3 +14,31 @@ and
 ```
 class MovieWithGenre
 ```
+- The MovieDecorator class is the base decorator class that wraps around a movie object and provides a common interface for interacting with the decorated movie.
+```
+export class MovieDecorator {
+    constructor(movie) {
+        this.movie = movie;
+    }
+```
+- It has a printDetails() method that prints out the basic details of the movie, such as the title, year, and director.
+```
+ printDetails() {
+        console.log(`${this.movie.getTitle()} (${this.movie.getYear()}) directed by ${this.movie.getDirector()}`);
+    }
+}
+```
+- The MovieWithGenre class is a concrete decorator that adds a genre property to the movie object. It extends the MovieDecorator class and overrides its printDetails() method to first call the parent method to print the basic details, and then print out the genre.
+```
+export class MovieWithGenre extends MovieDecorator {
+    constructor(movie, genre) {
+        super(movie);
+        this.genre = genre;
+    }
+
+    printDetails() {
+        super.printDetails();
+        console.log(`Genre: ${this.genre}`);
+    }
+}
+```
