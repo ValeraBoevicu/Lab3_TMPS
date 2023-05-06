@@ -42,3 +42,77 @@ export class MovieWithGenre extends MovieDecorator {
     }
 }
 ```
+### 2.Facade pattern for managing the movie system:
+- The code defines a class MovieSystem that provides a simple interface for adding, removing, and getting information about movies in the system.
+```
+export class MovieSystem {
+    constructor() {
+        this.movieList = [];
+    }
+```
+- add a movie to the system:
+```
+addMovie(movie) {
+        this.movieList.push(movie);
+    }
+```
+- remove a movie from the system:
+```
+removeMovie(movie) {
+        const index = this.movieList.indexOf(movie);
+        if (index !== -1) {
+            this.movieList.splice(index, 1);
+        }
+    }
+```
+- get all the movies in the system:
+```
+getAllMovies() {
+        return this.movieList;
+    }
+```
+### 3. Adapter pattern for interacting with different types of movies:
+- This section defines the MovieAdapter class, which adapts different types of movies to a common interface. The class has a constructor that takes a movie object as its parameter and sets it as an instance variable. The class also has three methods: getTitle(), getDirector(), and getYear(), which retrieve the title, director, and year of the movie, respectively.
+```
+class MovieAdapter {
+    constructor(movie) {
+        this.movie = movie;
+    }
+
+    getTitle() {
+        return this.movie.title;
+    }
+
+    getDirector() {
+        return this.movie.director;
+    }
+
+    getYear() {
+        return this.movie.year;
+    }
+
+
+}
+```
+- These sections define the adapter classes that extend MovieAdapter. Each class overrides the getType() method to return the type of the movie it is adapting ("action", "comedy", or "drama") and with these adapter classes, different types of movies can be adapted to the same interface, allowing them to be used interchangeably in the code that interacts with them.
+```
+export class ActionMovieAdapter extends MovieAdapter {
+    getType() {
+        return "action";
+    }
+}
+
+export class ComedyMovieAdapter extends MovieAdapter {
+    getType() {
+        return "comedy";
+    }
+}
+
+export class DramaMovieAdapter extends MovieAdapter {
+    getType() {
+        return "drama";
+    }
+}
+```
+### 4.Bridge pattern for creating different types of movies:
+
