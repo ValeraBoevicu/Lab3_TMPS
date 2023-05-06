@@ -115,4 +115,32 @@ export class DramaMovieAdapter extends MovieAdapter {
 }
 ```
 ### 4.Bridge pattern for creating different types of movies:
+- Each subclass of MovieType implements the getType method to return the corresponding type of movie. For example, the ActionMovieType class returns "action" as the type.
+- The Movie class has a constructor that takes in the movie's title, director, and year, and sets them as instance variables. Each subclass of Movie implements the getType method, which creates and returns an instance of the corresponding MovieType subclass.
+```
+class Movie {
+    constructor(title, director, year) {
+        this.title = title;
+        this.director = director;
+        this.year = year;
+    }
+}
+```
+- The MovieType class represents the implementation of the movie type, and has a constructor that takes in an instance of the Movie class. It has a single method, getType, which returns the type of the movie.
+```
+export class ActionMovie extends Movie {
+    getType() {
+        // Create and return an instance of the corresponding implementation
+        return new ActionMovieType(this);
+    }
+}
+```
+```
+export class ActionMovieType extends MovieType {
+    getType() {
+        // Return the type of the movie
+        return "action";
+    }
+}
+```
 
