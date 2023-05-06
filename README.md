@@ -10,6 +10,7 @@
 ```
 class MovieDecorator
 ```
+and
 ```
 class MovieWithGenre
 ```
